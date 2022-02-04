@@ -1,0 +1,18 @@
+﻿@model IEnumerable<MVCNET6.Data.WorkLog.IWorkLogListItem>
+
+<table>
+    <tr>
+        <th>Start Date</th>
+        <th>Employee</th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var workLog in Model)
+    {
+        <tr>
+            <td>@workLog.StartDate.ToString("MM/dd/yyyy hh:mm A")</td>
+            <td>@workLog.Employee.Name</td>
+            <td></td>
+        </tr>
+    }
+</table>
+<a asp-action="Index" asp-route-offset="@ViewBag.Offset">Next Page</a>
