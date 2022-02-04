@@ -1,8 +1,19 @@
 ﻿@model IEnumerable<MVCNET6.Data.WorkLog.IWorkLogListItem>
 
-<h1>Work Logs</h1>
-<a asp-action="Add">Create Work Log</a>
-<a asp-action="Search">Advanced Search</a>
+<form method="post">
+    <label>Start Range</label>
+    <input name="StartRange" type="date"/>
+    <label>End Range</label>
+    <input name="EndRange" type="date"/>
+    <label>Employees (multiple selection)</label>
+    <select name="EmployeeIds" asp-items="ViewBag.Employees" multiple="multiple"></select>
+    <label>Number of results to display</label>
+    <input name="NumberOfResults" value="10"/>
+    <div>
+        <input type="submit"/>
+    </div>
+</form>
+
 <table>
     <tr>
         <th>Start Date</th>
@@ -21,12 +32,3 @@
         </tr>
     }
 </table>
-
-@if (ViewBag.PrevOffset >= 0)
-{
-    <a asp-action="Index" asp-route-offset="@ViewBag.PrevOffset">Previous Page</a>
-}
-@if (Model.Count() == 10)
-{
-    <a asp-action="Index" asp-route-offset="@ViewBag.NextOffset">Next Page</a>
-}

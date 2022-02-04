@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using MVCNET6.Data;
 using MVCNET6.Data.Repositories;
+using MVCNET6.Models;
 
 namespace MVCNET6.Controllers
 {
@@ -54,6 +55,21 @@ namespace MVCNET6.Controllers
         public IActionResult EmployeeDetail(int id)
         {
             return View(_employeeRepository.GetDetails(id));
+        }
+
+        public IActionResult Search()
+        {
+            ViewBag.Employees = new SelectList(_employeeRepository.GetSelectListItems(), nameof(Employee.Id), nameof(Employee.Name));
+            var search = _workLogRepository.Search(new SearchModel());
+            return View(search);
+        }
+
+        [HttpPost]
+        public IActionResult Search(SearchModel model)
+        {
+            ViewBag.Employees = new SelectList(_employeeRepository.GetSelectListItems(), nameof(Employee.Id), nameof(Employee.Name));
+            var results = _workLogRepository.Search(model, model.NumberOfResults);
+            return View(results);
         }
     }
 }

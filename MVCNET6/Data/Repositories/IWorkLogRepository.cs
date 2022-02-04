@@ -13,5 +13,7 @@ namespace MVCNET6.Data.Repositories
 
         [Delete(TableName = nameof(WorkLog))]
         void Delete(int id);
+
+        IEnumerable<WorkLog.IWorkLogListItem> Search(WorkLog.ISearch filter, [Fetch] int fetch = 10);
     }
 }

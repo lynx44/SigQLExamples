@@ -1,9 +1,13 @@
-﻿namespace MVCNET6.Data
+﻿using SigQL.Types;
+using SigQL.Types.Attributes;
+
+namespace MVCNET6.Data
 {
     public class WorkLog
     {
         public int Id { get; set; }
         public DateTime StartDate { get; set; }
+        public int EmployeeId { get; set; }
 
         public interface IWorkLogListItem
         {
@@ -35,6 +39,16 @@
         {
             public DateTime StartDate { get; set; }
             public int EmployeeId { get; set; }
+        }
+
+        public interface ISearch
+        {
+            [Column(nameof(WorkLog.StartDate)), GreaterThanOrEqual, IgnoreIfNullOrEmpty]
+            public DateTime? StartRange { get; set; }
+            [Column(nameof(WorkLog.StartDate)), LessThanOrEqual, IgnoreIfNullOrEmpty]
+            public DateTime? EndRange { get; set; }
+            [Column(nameof(WorkLog.EmployeeId)), IgnoreIfNullOrEmpty]
+            public IEnumerable<int> EmployeeIds { get; set; }
         }
     }
 }
