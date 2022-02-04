@@ -1,0 +1,13 @@
+﻿@model MVCNET6.Data.WorkLog.Insert
+
+<h1>Create Work Log</h1>
+<form method="post">
+    <label for="StartDate">Start Date</label>
+    <input asp-for="StartDate" type="date"/>
+    <label for="EmployeeId">Employee</label>
+    <select asp-for="EmployeeId" asp-items="ViewBag.Employees"></select>
+
+    <div>
+        <input type="submit"/>
+    </div>
+</form>

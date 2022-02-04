@@ -1,0 +1,12 @@
+﻿@model MVCNET6.Data.WorkLog.IDetails
+
+<h1>Work Log Details</h1>
+<label for="Id">Id</label>
+<span id="Id">@Model.Id</span>
+<label for="StartDate">Start Date</label>
+<span id="StartDate">@Model.StartDate.ToString("MM/dd/yyyy hh:mm A")</span>
+
+<label for="EmployeeId">Employee ID</label>
+<span id="EmployeeId">@Model.Employee.Id</span>
+<label for="EmployeeName">Employee Name</label>
+<span id="EmployeeName"><a asp-action="EmployeeDetail" asp-route-id="@Model.Employee.Id">@Model.Employee.Name</a></span>

@@ -1,0 +1,22 @@
+﻿@using MVCNET6.Data
+@model MVCNET6.Data.Employee.IDetailsWithWorkLogs
+
+<h1>Employee Details</h1>
+<label for="EmployeeId">Employee ID</label>
+<span id="EmployeeId">@Model.Id</span>
+<label for="EmployeeName">Employee Name</label>
+<span id="EmployeeName">@Model.Name</span>
+
+<table>
+    <tr>
+        <th>Work Logs</th>
+    </tr>
+    @foreach(var workLog in Model.WorkLogs)
+    {
+        <tr>
+            <td>
+                <a asp-action="Details" asp-route-id="@workLog.Id" >@workLog.StartDate.ToString("MM/dd/yyyy hh:mm A")</a>
+            </td>
+        </tr>
+    }
+</table>

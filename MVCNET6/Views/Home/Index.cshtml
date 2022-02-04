@@ -1,5 +1,7 @@
 ﻿@model IEnumerable<MVCNET6.Data.WorkLog.IWorkLogListItem>
 
+<h1>Work Logs</h1>
+<a asp-action="Add">Create Work Log</a>
 <table>
     <tr>
         <th>Start Date</th>
@@ -10,9 +12,19 @@
     {
         <tr>
             <td>@workLog.StartDate.ToString("MM/dd/yyyy hh:mm A")</td>
-            <td>@workLog.Employee.Name</td>
-            <td></td>
+            <td><a asp-action="Details" asp-route-id="@workLog.Employee.Id">@workLog.Employee.Name</a></td>
+            <td>
+                <a asp-action="Details" asp-route-id="@workLog.Id">Details</a>
+                <a asp-action="Delete" asp-route-id="@workLog.Id">Delete</a>
+            </td>
         </tr>
     }
 </table>
-<a asp-action="Index" asp-route-offset="@ViewBag.Offset">Next Page</a>
+@if (ViewBag.PrevOffset >= 0)
+{
+    <a asp-action="Index" asp-route-offset="@ViewBag.PrevOffset">Previous Page</a>
+}
+@if (Model.Count() == 10)
+{
+    <a asp-action="Index" asp-route-offset="@ViewBag.NextOffset">Next Page</a>
+}
