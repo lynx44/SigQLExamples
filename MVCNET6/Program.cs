@@ -29,6 +29,11 @@ builder.Services.AddSingleton(s =>
     var repositoryBuilder = s.GetService(typeof(RepositoryBuilder)) as RepositoryBuilder;
     return repositoryBuilder.Build<IWorkLogRepository>(s.GetService);
 });
+builder.Services.AddSingleton(s =>
+{
+    var repositoryBuilder = s.GetService(typeof(RepositoryBuilder)) as RepositoryBuilder;
+    return repositoryBuilder.Build<IReportRepository>(s.GetService);
+});
 
 var app = builder.Build();
 

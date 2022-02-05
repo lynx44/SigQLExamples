@@ -1,0 +1,24 @@
+﻿@model IEnumerable<MVCNET6.Data.itvfWorkingEmployeesForMonth>
+
+<div>
+    <form method="get">
+    <label>Month:</label>
+    <input type="number" name="Month"/>
+    <label>Year:</label>
+    <input type="number" name="Year"/>
+    <div>
+        <input type="submit"/>
+    </div>
+    </form>
+</div>
+<table>
+    <tr>
+        <th>Employee</th>
+    </tr>
+    @foreach (var employee in Model)
+    {
+        <tr>
+            <td><a asp-action="EmployeeDetail" asp-controller="Home" asp-route-id="@employee.Id">@employee.Name</a></td>
+        </tr>
+    }
+</table>
