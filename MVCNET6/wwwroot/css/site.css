@@ -38,6 +38,10 @@ input[type=submit] {
     border: none;
 }
 
+table {
+    width: 100%;
+    max-width: 700px;
+}
 table tr td, table tr th {
     padding: 8px;
 }

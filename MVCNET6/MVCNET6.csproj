@@ -14,7 +14,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="SigQL.SqlServer" Version="0.0.1-CI-22-d5ae390" />
+    <PackageReference Include="SigQL.SqlServer" Version="0.0.1-CI-25-4fef402" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="SqlScripts\Schema.sql">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="SqlScripts\SeedData.sql">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

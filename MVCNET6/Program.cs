@@ -1,13 +1,19 @@
 using Microsoft.Data.SqlClient;
+using MVCNET6.Data;
 using MVCNET6.Data.Repositories;
 using SigQL;
 using SigQL.SqlServer;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+
 // Add services to the container.
 builder.Services.AddRazorPages();
 var connectionString = "Server=localhost;Database=SigQL_MVCNET6;Trusted_Connection=True;MultipleActiveResultSets=true";
+
+DatabaseInitializer.Create(connectionString, builder.Environment.ContentRootPath);
+
 builder.Services.AddSingleton(s =>
 {
     var sqlDatabaseConfiguration = new SqlDatabaseConfiguration(connectionString);
