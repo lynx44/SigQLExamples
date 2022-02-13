@@ -12,6 +12,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 var connectionString = "Server=localhost;Database=SigQL_MVCNET6;Trusted_Connection=True;MultipleActiveResultSets=true";
 
+// (do not copy this line)
+// create the test database for this web app. This is for this demo application only -
+// you will use your existing database or run migrations
 DatabaseInitializer.Create(connectionString, builder.Environment.ContentRootPath);
 
 builder.Services.AddSingleton(s =>
