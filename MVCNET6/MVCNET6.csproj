@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="SigQL.SqlServer" Version="0.0.1" />
+    <PackageReference Include="SigQL.SqlServer" Version="0.0.2" />
   </ItemGroup>
 
   <ItemGroup>
